@@ -7,11 +7,26 @@ from rest_framework.response import Response
 from rest_framework import generics
 from rest_framework import mixins
 from rest_framework import status
-
-
-
+from rest_framework.decorators import api_view
 from .models import Todo
 from .serializers import TodoSerializer
+
+
+@api_view(['GET'])
+def apiOverview(request):
+    # '''
+    # Set safe=False to allow other data types rather than dictionary
+    # In order to allow non-dict objects to be serialized set the safe parameter to False 
+    # '''
+    api_urls = {
+        'List': '/api/todos/',
+        'Detail View': '/api/todos/<int:pk>/',
+        'Create': '/api/todos/',
+        'Update': '/api/todos/<int:pk>/',
+        'Delete': '/api/todos/<int:pk>/',
+    }
+    
+    return Response(api_urls)
 
 
 class TodoListView(

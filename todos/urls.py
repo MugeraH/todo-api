@@ -1,14 +1,14 @@
 from django.urls import path
-from .views import  TodoListView,TodoDetailView
+from .views import  apiOverview,TodoListView,TodoDetailView
 
 
 
 from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
-
-path('todos',TodoListView.as_view(),name="todo-list"),  
-path('todos/<int:pk>',TodoDetailView.as_view(),name="todo-detail"),  
+ path('',apiOverview,name='api'),
+path('api/todos',TodoListView.as_view(),name="todo-list"),  
+path('api/todos/<int:pk>',TodoDetailView.as_view(),name="todo-detail"),  
 
 ]
 
